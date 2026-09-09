@@ -25,7 +25,8 @@ jobs:
 
     - name: Compilar o script em .exe
       run: |
-        pyinstaller --noconsole --onefile conversor.py
+        if (Test-Path "Conversor.py") { pyinstaller --noconsole --onefile Conversor.py }
+        else { pyinstaller --noconsole --onefile conversor.py }
 
     - name: Guardar o arquivo .exe pronto
       uses: actions/upload-artifact@v4
